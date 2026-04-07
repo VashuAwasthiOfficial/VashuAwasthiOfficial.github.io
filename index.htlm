@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vashu Awasthi | Founder & Architect</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            text-align: center; 
+            padding: 80px 20px; 
+            background: #0d1117; 
+            color: #c9d1d9; 
+            line-height: 1.6;
+        }
+        h1 { color: #f0f6fc; font-size: 2.5rem; margin-bottom: 10px; }
+        .subtitle { color: #58a6ff; font-size: 1.2rem; font-weight: 500; margin-bottom: 30px; }
+        .container { max-width: 600px; margin: 0 auto; }
+        .links { margin-top: 40px; }
+        .links a { 
+            display: inline-block;
+            color: #f0f6fc; 
+            margin: 10px; 
+            text-decoration: none; 
+            border: 1px solid #30363d; 
+            padding: 12px 25px; 
+            border-radius: 6px; 
+            background: #161b22;
+            transition: all 0.2s ease;
+        }
+        .links a:hover { 
+            background: #30363d; 
+            border-color: #8b949e;
+            transform: translateY(-2px);
+        }
+        .footer { margin-top: 60px; font-size: 0.8rem; color: #8b949e; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Vashu Awasthi</h1>
+        <p class="subtitle">Founder | Software Architect</p>
+        
+        <p>I am building a next-generation platform using <strong>Java Spring Boot</strong> for scalable backends and <strong>Flutter/Dart</strong> for cross-platform experiences.</p>
+        
+        <p>Focusing on robust architecture, clean code, and high-impact digital solutions.</p>
+
+        <div class="links">
+            <!-- Corrected URLs for your profiles -->
+            <a href="https://github.com" target="_blank">GitHub Portfolio</a>
+            <a href="https://linkedin.com" target="_blank">Connect on LinkedIn</a>
+        </div>
+
+        <div class="footer">
+            &copy; 2026 Vashu Awasthi. Powered by GitHub Pages.
+        </div>
+    </div>
+</body>
+</html>
