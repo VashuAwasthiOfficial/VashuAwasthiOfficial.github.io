@@ -5,55 +5,238 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vashu Awasthi | Founder & Architect</title>
     <style>
+        :root {
+            --bg-dark: #0a0d14;
+            --panel-dark: #121824;
+            --accent-orange: #ff6b35;
+            --accent-blue: #4dadff;
+            --text-main: #f0f6fc;
+            --text-muted: #8b949e;
+            --border-color: #212b3e;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            text-align: center; 
-            padding: 80px 20px; 
-            background: #0d1117; 
-            color: #c9d1d9; 
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
+            background: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 80% 20%, rgba(255, 107, 53, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 10% 80%, rgba(77, 173, 255, 0.06) 0%, transparent 40%);
+            color: var(--text-main); 
             line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
         }
-        h1 { color: #f0f6fc; font-size: 2.5rem; margin-bottom: 10px; }
-        .subtitle { color: #58a6ff; font-size: 1.2rem; font-weight: 500; margin-bottom: 30px; }
-        .container { max-width: 600px; margin: 0 auto; }
-        .links { margin-top: 40px; }
-        .links a { 
-            display: inline-block;
-            color: #f0f6fc; 
-            margin: 10px; 
+
+        .container { 
+            max-width: 700px; 
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Hero Typography */
+        h1 { 
+            font-size: 3rem; 
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 8px; 
+            background: linear-gradient(135deg, #ffffff 40%, #a3b3cc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle { 
+            color: var(--accent-blue); 
+            font-size: 1.25rem; 
+            font-weight: 600; 
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 35px; 
+        }
+
+        .lead-text {
+            font-size: 1.15rem;
+            color: #c9d1d9;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Simulated IDE / Terminal Window */
+        .terminal-window {
+            background: var(--panel-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            text-align: left;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            overflow: hidden;
+        }
+
+        .terminal-header {
+            background: #182030;
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .terminal-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        .dot-r { background: #ff5f56; }
+        .dot-y { background: #ffbd2e; }
+        .dot-g { background: #27c93f; }
+
+        .terminal-title {
+            margin-left: 20px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .terminal-body {
+            padding: 24px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+            color: #adbac7;
+        }
+
+        .line { margin-bottom: 6px; }
+        .keyword { color: #f47067; }
+        .type { color: #6cb6ff; }
+        .string { color: #96d0ff; }
+        .comment { color: #768390; }
+
+        /* Badges & Actions Layout */
+        .badge-container {
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .badge-container img {
+            border-radius: 8px;
+            transition: transform 0.2s;
+        }
+
+        .badge-container img:hover {
+            transform: scale(1.02);
+        }
+
+        .action-buttons { 
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .btn { 
+            display: inline-flex;
+            align-items: center;
+            color: var(--text-main); 
             text-decoration: none; 
-            border: 1px solid #30363d; 
-            padding: 12px 25px; 
-            border-radius: 6px; 
-            background: #161b22;
-            transition: all 0.2s ease;
+            border: 1px solid var(--border-color); 
+            padding: 14px 28px; 
+            border-radius: 8px; 
+            background: rgba(22, 27, 34, 0.5);
+            font-weight: 600;
+            font-size: 0.95rem;
+            backdrop-filter: blur(8px);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .links a:hover { 
-            background: #30363d; 
-            border-color: #8b949e;
+
+        .btn-primary {
+            background: var(--accent-orange);
+            border-color: var(--accent-orange);
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(255, 107, 53, 0.3);
+        }
+
+        .btn:hover { 
             transform: translateY(-2px);
         }
-        .footer { margin-top: 60px; font-size: 0.8rem; color: #8b949e; }
+
+        .btn-primary:hover {
+            background: #ff7c4d;
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        .btn-secondary:hover {
+            background: var(--panel-dark);
+            border-color: var(--text-muted);
+        }
+
+        .footer { 
+            margin-top: auto;
+            font-size: 0.85rem; 
+            color: var(--text-muted); 
+            border-top: 1px solid var(--border-color);
+            padding-top: 24px;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Vashu Awasthi</h1>
-        <p class="subtitle">Founder | Software Architect</p>
+        <p class="subtitle">Founder &amp; Software Architect</p>
         
-        <p>I am building a next-generation platform using <strong>Java Spring Boot</strong> for scalable backends and <strong>Flutter/Dart</strong> for cross-platform experiences.</p>
-        
-        <p>Focusing on robust architecture, clean code, and high-impact digital solutions.</p>
+        <p class="lead-text">Building robust architectures, writing clean code, and deploying high-impact digital solutions for the next generation of platforms.</p>
 
-        <div class="links">
-            <!-- Corrected URLs for your profiles -->
-            <a href="https://www.producthunt.com/products/flashtalks?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-flashtalks" target="_blank" rel="noopener noreferrer"><img alt="FlashTalks - Say it Fast. Say it Loud. | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1149269&amp;theme=dark&amp;t=1779116432633"></a>
-            <a href="https://flashtalks.onrender.com/" target="_blank">FlashTalks</a>
-            <a href="https://linkedin.com/in/VashuAwasthi" target="_blank">Connect on LinkedIn</a>            
+        <!-- Dynamic Developer Architecture Module -->
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <div class="terminal-dots">
+                    <div class="dot dot-r"></div>
+                    <div class="dot dot-y"></div>
+                    <div class="dot dot-g"></div>
+                </div>
+                <div class="terminal-title">architect_config.java</div>
+            </div>
+            <div class="terminal-body">
+                <div class="line"><span class="comment">// Define core core technological stacks</span></div>
+                <div class="line"><span class="keyword">public class</span> <span class="type">Platform</span> {</div>
+                <div class="line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="type">String</span> backend = <span class="string">"Java Spring Boot / Scalable Microservices"</span>;</div>
+                <div class="line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="type">String</span> frontend = <span class="string">"Flutter / Dart Cross-Platform"</span>;</div>
+                <div class="line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="type">boolean</span> productionReady = <span class="keyword">true</span>;</div>
+                <div class="line">}</div>
+            </div>
+        </div>
+
+        <!-- Dedicated Product Hunt Segment -->
+        <div class="badge-container">
+            <a href="https://www.producthunt.com/products/flashtalks?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-flashtalks" target="_blank" rel="noopener noreferrer">
+                <img alt="FlashTalks - Product Hunt Feature" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1149269&amp;theme=dark&amp;t=1779116432633">
+            </a>
+        </div>
+
+        <!-- Clean Action Layout -->
+        <div class="action-buttons">
+            <a href="https://flashtalks.onrender.com/" target="_blank" class="btn btn-primary">Launch FlashTalks</a>
+            <a href="https://linkedin.com/in/VashuAwasthi" target="_blank" class="btn btn-secondary">Connect on LinkedIn</a>            
         </div>
 
         <div class="footer">
-            &copy; 2026 Vashu Awasthi. Powered by GitHub Pages.
+            &copy; 2026 Vashu Awasthi &bull; Powered by GitHub Pages
         </div>
     </div>
 </body>
