@@ -3,62 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vashu Awasthi | Founder</title>
+    <title>Vashu Awasthi | Founder &amp; Lead Architect</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: system-ui, sans-serif; background: #030712; color: #f3f4f6; padding: 40px 20px; line-height: 1.6; }
-        .box { max-width: 900px; margin: 0 auto; }
-        header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 40px; border-bottom: 1px solid #1f2937; }
-        .hero { padding: 60px 0; }
-        h1 { font-size: 3.5rem; letter-spacing: -0.03em; margin-bottom: 10px; }
-        span { color: #00d2ff; }
-        .desc { font-size: 1.25rem; color: #9ca3af; margin-bottom: 30px; max-width: 600px; }
-        .btn { display: inline-block; background: #ff6b35; color: #fff; text-decoration: none; padding: 12px 24px; border-radius: 6px; font-weight: 600; margin-right: 10px; }
-        .btn-alt { background: transparent; border: 1px solid #374151; }
-        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-top: 60px; }
+        :root { --bg: #030712; --card: #0b1329; --cyan: #00d2ff; --orange: #ff6b35; --txt: #f3f4f6; --muted: #9ca3af; }
+        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+        body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--txt); line-height: 1.5; padding: 30px 15px; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 25px; border-bottom: 1px solid #1e293b; }
+        .hero { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; padding: 60px 0; align-items: center; }
+        @media (max-width: 768px) { .hero { grid-template-columns: 1fr; text-align: center; } .profile { order: -1; } .btns { justify-content: center; } }
+        h1 { font-size: 3.5rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
+        .gradient { background: linear-gradient(135deg, #fff, var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .desc { font-size: 1.15rem; color: var(--muted); margin: 20px 0 30px 0; }
+        .btns { display: flex; gap: 15px; }
+        .btn { display: inline-block; background: var(--orange); color: #fff; text-decoration: none; padding: 12px 28px; border-radius: 8px; font-weight: 600; transition: 0.2s; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(255,107,53,0.3); }
+        .btn-alt { background: transparent; border: 1px solid #1e293b; }
+        .btn-alt:hover { border-color: var(--muted); }
+        .profile { background: var(--card); border: 1px solid #1e293b; padding: 25px; border-radius: 20px; text-align: center; }
+        .avatar { width: 100%; aspect-ratio: 1/1; border-radius: 12px; overflow: hidden; margin-bottom: 15px; }
+        .avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin: 40px 0; }
         @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
-        .card { background: #0b1329; border: 1px solid #1f2937; padding: 24px; border-radius: 12px; }
-        .imgs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 15px; }
-        .imgs img { width: 100%; border-radius: 6px; }
-        .form input, .form textarea { width: 100%; background: #030712; border: 1px solid #374151; padding: 12px; color: #fff; border-radius: 6px; margin: 10px 0; font-family: inherit; }
+        .project { background: var(--card); border: 1px solid #1e293b; padding: 25px; border-radius: 16px; }
+        .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; }
+        .gallery img { width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 8px; border: 1px solid #1e293b; }
+        .form input, .form textarea { width: 100%; background: var(--bg); border: 1px solid #1e293b; padding: 12px; color: #fff; border-radius: 8px; margin: 10px 0; font-family: inherit; }
     </style>
 </head>
 <body>
-    <div class="box">
+    <div class="container">
         <header>
-            <h2>VASHU.BUILD</h2>
-            <div style="color: #00d2ff; font-family: monospace;" id="clock">00:00:00 PM</div>
+            <h3 style="letter-spacing: -0.01em;">VASHU.BUILD</h3>
+            <div style="color: var(--cyan); font-family: monospace;" id="time">00:00:00 PM</div>
         </header>
 
         <section class="hero">
-            <h1>Next-Gen <span>Networks</span></h1>
-            <p class="desc">I architect scalable Java Spring Boot backends and ship native mobile products via Flutter &amp; Dart.</p>
-            <a href="#contact" class="btn">Connect</a>
-            <a href="https://linkedin.com" target="_blank" class="btn btn-alt">LinkedIn</a>
+            <div>
+                <span style="color: var(--orange); font-family: monospace; font-weight: 700; font-size: 0.85rem;">[FOUNDER_NODE_ACTIVE]</span>
+                <h1 style="margin-top: 5px;">Next-Gen <span class="gradient">Networks</span></h1>
+                <p class="desc">I architect robust Java Spring Boot backends and build high-impact cross-platform apps with Flutter &amp; Dart.</p>
+                <div style="margin-bottom: 30px;">
+                    <a href="https://producthunt.com" target="_blank">
+                        <img alt="FlashTalks" width="220" height="48" src="https://producthunt.com">
+                    </a>
+                </div>
+                <div class="btns">
+                    <a href="#contact" class="btn">Connect</a>
+                    <a href="https://linkedin.com" target="_blank" class="btn btn-alt">LinkedIn</a>
+                </div>
+            </div>
+            <div class="profile">
+                <div class="avatar">
+                    <img src="https://unsplash.com" alt="Profile">
+                </div>
+                <h4>Vashu Awasthi</h4>
+                <p style="color: var(--cyan); font-family: monospace; font-size: 0.8rem; margin: 2px 0 10px 0;">Software Architect</p>
+                <p style="font-size: 0.85rem; color: var(--muted);">Building clean code and distributed, high-concurrency cloud environments.</p>
+            </div>
         </section>
-
-        <div style="margin-bottom: 30px;">
-            <a href="https://producthunt.com" target="_blank">
-                <img alt="FlashTalks" width="240" height="52" src="https://producthunt.com">
-            </a>
-        </div>
 
         <section class="grid">
-            <div class="card">
-                <h3>LiveNet Ecosystem</h3>
-                <p style="color: #9ca3af; font-size: 0.95rem; margin-top: 5px;">High-concurrency mobile timeline system.</p>
-                <a href="https://thelivenet.com" target="_blank" style="color: #ff6b35; display: inline-block; margin-top: 15px;">Launch LiveNet &rarr;</a>
-                <div class="imgs">
+            <div class="project">
+                <h4>LiveNet Ecosystem</h4>
+                <p style="color: var(--muted); font-size: 0.9rem; margin-top: 4px;">Asynchronous messaging pipeline network layer built for extreme scale.</p>
+                <a href="https://thelivenet.com" target="_blank" style="color: var(--cyan); text-decoration: none; font-size: 0.85rem; display: inline-block; margin-top: 15px; font-family: monospace;">LAUNCH_PORTAL &rarr;</a>
+                <div class="gallery">
                     <img src="https://unsplash.com">
                     <img src="https://unsplash.com">
                     <img src="https://unsplash.com">
                 </div>
             </div>
-            <div class="card">
-                <h3>FlashTalks Matrix</h3>
-                <p style="color: #9ca3af; font-size: 0.95rem; margin-top: 5px;">Rapid data streaming interaction network.</p>
-                <a href="https://onrender.com" target="_blank" style="color: #ff6b35; display: inline-block; margin-top: 15px;">Visit FlashTalks &rarr;</a>
-                <div class="imgs">
+            <div class="project">
+                <h4>FlashTalks Matrix</h4>
+                <p style="color: var(--muted); font-size: 0.9rem; margin-top: 4px;">Dynamic, real-time message stream router utilizing secure API channels.</p>
+                <a href="https://onrender.com" target="_blank" style="color: var(--cyan); text-decoration: none; font-size: 0.85rem; display: inline-block; margin-top: 15px; font-family: monospace;">RUN_CONSOLE &rarr;</a>
+                <div class="gallery">
                     <img src="https://unsplash.com">
                     <img src="https://unsplash.com">
                     <img src="https://unsplash.com">
@@ -66,22 +86,22 @@
             </div>
         </section>
 
-        <section id="contact" class="card" style="margin-top: 40px;">
-            <h3>Contact Hub</h3>
+        <section id="contact" class="project" style="max-width: 600px; margin: 40px auto;">
+            <h4>Secure Handshake</h4>
             <form class="form" action="#" method="POST" onsubmit="event.preventDefault(); alert('Sent!');">
-                <input type="text" placeholder="Name" required>
-                <input type="email" placeholder="Email" required>
-                <textarea rows="3" placeholder="Message Protocol" required></textarea>
-                <button type="submit" class="btn" style="border: none; width: 100%; margin-top: 10px; cursor: pointer;">Send Message</button>
+                
+                <input type="email" placeholder="Endpoint Email" required>
+                <textarea rows="3" placeholder="Message Payload" required></textarea>
+                <button type="submit" class="btn" style="width: 100%; margin-top: 10px; border: none; cursor: pointer;">Broadcast Data</button>
             </form>
         </section>
     </div>
 
     <script>
-        function updateTime() {
-            document.getElementById('clock').textContent = new Date().toLocaleTimeString('en-US', { timeZone: 'Asia/Kolkata' });
+        function clock() {
+            document.getElementById('time').textContent = new Date().toLocaleTimeString('en-US', { timeZone: 'Asia/Kolkata' });
         }
-        setInterval(updateTime, 1000); updateTime();
+        setInterval(clock, 1000); clock();
     </script>
 </body>
 </html>
