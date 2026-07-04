@@ -3,241 +3,373 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vashu Awasthi | Founder & Architect</title>
+    <title>Vashu Awasthi | Founder & Software Architect</title>
     <style>
         :root {
-            --bg-dark: #0a0d14;
-            --panel-dark: #121824;
+            --bg-base: #060911;
+            --card-surface: #0d1321;
+            --border-glow: #1f2d4a;
             --accent-orange: #ff6b35;
             --accent-blue: #4dadff;
-            --text-main: #f0f6fc;
-            --text-muted: #8b949e;
-            --border-color: #212b3e;
+            --text-primary: #f0f6fc;
+            --text-secondary: #8b949e;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            scroll-behavior: smooth;
         }
 
-        body { 
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
-            background: var(--bg-dark);
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-base);
             background-image: 
-                radial-gradient(circle at 80% 20%, rgba(255, 107, 53, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 10% 80%, rgba(77, 173, 255, 0.06) 0%, transparent 40%);
-            color: var(--text-main); 
+                radial-gradient(circle at 90% 10%, rgba(255, 107, 53, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 10% 60%, rgba(77, 173, 255, 0.05) 0%, transparent 50%);
+            color: var(--text-primary);
             line-height: 1.6;
-            min-height: 100vh;
+            padding: 0;
+        }
+
+        /* Navigation Header */
+        header {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 24px 20px;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            padding: 40px 20px;
         }
 
-        .container { 
-            max-width: 700px; 
-            width: 100%;
-            text-align: center;
-        }
-
-        /* Hero Typography */
-        h1 { 
-            font-size: 3rem; 
+        .logo {
             font-weight: 800;
-            letter-spacing: -0.03em;
-            margin-bottom: 8px; 
-            background: linear-gradient(135deg, #ffffff 40%, #a3b3cc);
+            font-size: 1.25rem;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #fff, #8b949e);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .subtitle { 
-            color: var(--accent-blue); 
-            font-size: 1.25rem; 
-            font-weight: 600; 
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 35px; 
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-left: 24px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s;
         }
 
-        .lead-text {
-            font-size: 1.15rem;
-            color: #c9d1d9;
-            margin-bottom: 30px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+        nav a:hover {
+            color: var(--text-primary);
         }
 
-        /* Simulated IDE / Terminal Window */
-        .terminal-window {
-            background: var(--panel-dark);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            text-align: left;
-            margin-bottom: 40px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-            overflow: hidden;
-        }
-
-        .terminal-header {
-            background: #182030;
-            padding: 12px 16px;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
+        /* Hero Wrapper Layout */
+        .hero-section {
+            max-width: 1100px;
+            margin: 60px auto 100px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
             align-items: center;
         }
 
-        .terminal-dots {
+        @media (max-width: 850px) {
+            .hero-section {
+                grid-template-columns: 1fr;
+                text-align: center;
+                margin-top: 20px;
+            }
+            .profile-card-wrapper {
+                order: -1;
+            }
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            margin-bottom: 12px;
+        }
+
+        .gradient-title {
+            background: linear-gradient(135deg, #fff 30%, var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .architecture-tag {
+            color: var(--accent-orange);
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .hero-desc {
+            font-size: 1.2rem;
+            color: #c9d1d9;
+            margin-bottom: 32px;
+        }
+
+        /* Profile Block Styling */
+        .profile-card-wrapper {
+            position: relative;
             display: flex;
-            gap: 6px;
+            justify-content: center;
         }
 
-        .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-        }
-        .dot-r { background: #ff5f56; }
-        .dot-y { background: #ffbd2e; }
-        .dot-g { background: #27c93f; }
-
-        .terminal-title {
-            margin-left: 20px;
-            font-family: monospace;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        .terminal-body {
+        .profile-frame {
+            background: var(--card-surface);
+            border: 1px solid var(--border-glow);
+            border-radius: 24px;
             padding: 24px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.95rem;
+            width: 100%;
+            max-width: 340px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+            text-align: center;
+        }
+
+        .avatar-placeholder {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background: #161f30;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .avatar-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-frame h3 {
+            font-size: 1.3rem;
+            margin-bottom: 4px;
+        }
+
+        .profile-frame p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+
+        /* Showcase App Section */
+        .showcase-container {
+            background: #090e1a;
+            border-top: 1px solid #141b2b;
+            border-bottom: 1px solid #141b2b;
+            padding: 90px 20px;
+        }
+
+        .section-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+
+        .accent-bar {
+            width: 60px;
+            height: 4px;
+            background: var(--accent-orange);
+            border-radius: 2px;
+        }
+
+        .app-grid-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        @media (max-width: 850px) {
+            .app-grid-layout {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        .app-info-panel h3 {
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .live-indicator {
+            background: rgba(255, 107, 53, 0.15);
+            color: var(--accent-orange);
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        .app-info-panel p {
             color: #adbac7;
+            font-size: 1.05rem;
+            margin-bottom: 24px;
         }
 
-        .line { margin-bottom: 6px; }
-        .keyword { color: #f47067; }
-        .type { color: #6cb6ff; }
-        .string { color: #96d0ff; }
-        .comment { color: #768390; }
-
-        /* Badges & Actions Layout */
-        .badge-container {
-            margin-bottom: 25px;
+        .tech-pill-row {
             display: flex;
-            justify-content: center;
-        }
-
-        .badge-container img {
-            border-radius: 8px;
-            transition: transform 0.2s;
-        }
-
-        .badge-container img:hover {
-            transform: scale(1.02);
-        }
-
-        .action-buttons { 
-            display: flex;
-            gap: 15px;
-            justify-content: center;
+            gap: 10px;
             flex-wrap: wrap;
-            margin-bottom: 40px;
+            margin-bottom: 32px;
         }
 
-        .btn { 
+        .tech-pill {
+            background: #141c2e;
+            border: 1px solid #222f4d;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-blue);
+        }
+
+        /* Integrated UI Flow Gallery */
+        .app-gallery-visuals {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .ui-mockup-frame {
+            background: var(--card-surface);
+            border: 1px solid var(--border-glow);
+            border-radius: 14px;
+            aspect-ratio: 9 / 19;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #384459;
+            font-size: 0.8rem;
+        }
+
+        .ui-mockup-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Primary Action Framework Buttons */
+        .btn {
             display: inline-flex;
             align-items: center;
-            color: var(--text-main); 
-            text-decoration: none; 
-            border: 1px solid var(--border-color); 
-            padding: 14px 28px; 
-            border-radius: 8px; 
-            background: rgba(22, 27, 34, 0.5);
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 8px;
             font-weight: 600;
             font-size: 0.95rem;
-            backdrop-filter: blur(8px);
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.2s;
+            cursor: pointer;
         }
 
-        .btn-primary {
+        .btn-orange {
             background: var(--accent-orange);
-            border-color: var(--accent-orange);
-            color: #ffffff;
-            box-shadow: 0 4px 14px rgba(255, 107, 53, 0.3);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 14px rgba(255, 107, 53, 0.35);
         }
 
-        .btn:hover { 
+        .btn-orange:hover {
+            background: #ff7c4d;
             transform: translateY(-2px);
         }
 
-        .btn-primary:hover {
-            background: #ff7c4d;
-            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        .btn-outline {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-glow);
+            margin-left: 12px;
         }
 
-        .btn-secondary:hover {
-            background: var(--panel-dark);
-            border-color: var(--text-muted);
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.03);
+            border-color: var(--text-secondary);
         }
 
-        .footer { 
-            margin-top: auto;
-            font-size: 0.85rem; 
-            color: var(--text-muted); 
-            border-top: 1px solid var(--border-color);
-            padding-top: 24px;
+        /* Interactive Footer Contact Matrix */
+        .contact-footer-block {
+            max-width: 600px;
+            margin: 100px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .contact-form {
+            background: var(--card-surface);
+            border: 1px solid var(--border-glow);
+            padding: 32px;
+            border-radius: 20px;
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+
+        .form-group input, .form-group textarea {
             width: 100%;
+            background: var(--bg-base);
+            border: 1px solid var(--border-glow);
+            padding: 12px 16px;
+            border-radius: 8px;
+            color: white;
+            font-family: inherit;
+            font-size: 0.95rem;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+
+        .footer-credits {
+            margin-top: 80px;
+            padding: 24px 0;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            border-top: 1px solid #141b2b;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Vashu Awasthi</h1>
-        <p class="subtitle">Founder &amp; Software Architect</p>
-        
-        <p class="lead-text">Building robust architectures, writing clean code, and deploying high-impact digital solutions for the next generation of platforms.</p>
 
-        <!-- Dynamic Developer Architecture Module -->
-        <div class="terminal-window">
-            <div class="terminal-header">
-                <div class="terminal-dots">
-                    <div class="dot dot-r"></div>
-                    <div class="dot dot-y"></div>
-                    <div class="dot dot-g"></div>
-                </div>
-                <div class="terminal-title">architect_config.java</div>
-            </div>
-            <div class="terminal-body">
-                <div class="line"><span class="comment">// Define core core technological stacks</span></div>
-                <div class="line"><span class="keyword">public class</span> <span class="type">Platform</span> {</div>
-                <div class="line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="type">String</span> backend = <span class="string">"Java Spring Boot / Scalable Microservices"</span>;</div>
-                <div class="line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="type">String</span> frontend = <span class="string">"Flutter / Dart Cross-Platform"</span>;</div>
-                <div class="line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="type">boolean</span> productionReady = <span class="keyword">true</span>;</div>
-                <div class="line">}</div>
-            </div>
-        </div>
-
-        <!-- Dedicated Product Hunt Segment -->
-        <div class="badge-container">
-            <a href="https://www.producthunt.com/products/flashtalks?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-flashtalks" target="_blank" rel="noopener noreferrer">
-                <img alt="FlashTalks - Product Hunt Feature" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1149269&amp;theme=dark&amp;t=1779116432633">
-            </a>
-        </div>
-
-        <!-- Clean Action Layout -->
-        <div class="action-buttons">
-            <a href="https://flashtalks.onrender.com/" target="_blank" class="btn btn-primary">Launch FlashTalks</a>
-            <a href="https://linkedin.com/in/VashuAwasthi" target="_blank" class="btn btn-secondary">Connect on LinkedIn</a>            
-        </div>
-
-        <div class="footer">
-            &copy; 2026 Vashu Awasthi &bull; Powered by GitHub Pages
-        </div>
-    </div>
-</body>
-</html>
+    <!-- Upper Control Header -->
